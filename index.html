@@ -1,0 +1,524 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+:root{
+  --sb:#025064;--sb-act:rgba(255,255,255,.11);--sb-bdr:rgba(255,255,255,.08);
+  --sb-txt:#A8D8DF;--sb-txa:#E4F6F9;
+  --acc:#1D9E75;--acc-h:#17845F;--acc-lt:#E1F5EE;
+  --page:#F2F5F5;--card:#fff;--bdr:#DDE6E4;
+  --tx:#1A2B28;--tx2:#4A6B64;--tx3:#7A9990;
+  --btn-bg:#E8F0EE;--btn-tx:#1A2B28;--btn-bdr:#BDD0CB;--btn-h:#D4E5E1;
+  --btn-p:#1D9E75;--btn-ph:#17845F;
+  --btn-w-bg:#FEF3DC;--btn-w-tx:#7A4500;--btn-w-bd:#F0D090;
+  --btn-d-bg:#F5E9E9;--btn-d-tx:#7A1F1F;--btn-d-bd:#E0B8B8;
+  --red-bg:#FEE9E9;--red-tx:#7A1F1F;
+  --amb-bg:#FEF3DC;--amb-tx:#7A4500;
+  --grn-bg:#E4F4EC;--grn-tx:#1A5C35;
+  --tel-bg:#E1F5EE;--tel-tx:#025064;
+  --gry-bg:#EEF0EF;--gry-tx:#3A4F4A;
+  --exc-crit:#FEE9E9;--exc-crit-bdr:#E0B8B8;--exc-crit-lft:#C93B3B;
+  --exc-high:#FEF3DC;--exc-high-bdr:#F0D090;--exc-high-lft:#D08B00;
+  --exc-med:#E1F5EE;--exc-med-bdr:#A8D8CB;--exc-med-lft:#1D9E75;
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:transparent}
+button{font-family:inherit;cursor:pointer;border-style:solid}
+.cb{font-size:11px;font-weight:500;padding:4px 11px;border-radius:6px;background:var(--btn-bg);color:var(--btn-tx);border:1px solid var(--btn-bdr);transition:background .12s;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.cb:hover{background:var(--btn-h)}
+.cb.pr{background:var(--btn-p);color:#fff;border-color:var(--btn-p)}.cb.pr:hover{background:var(--btn-ph);border-color:var(--btn-ph)}
+.cb.wn{background:var(--btn-w-bg);color:var(--btn-w-tx);border-color:var(--btn-w-bd)}
+.cb.dn{background:var(--btn-d-bg);color:var(--btn-d-tx);border-color:var(--btn-d-bd)}
+.tbn{font-size:11.5px;font-weight:500;padding:6px 13px;border-radius:6px;background:var(--btn-bg);color:var(--btn-tx);border:1px solid var(--btn-bdr);display:inline-flex;align-items:center;gap:5px;transition:background .12s;white-space:nowrap}
+.tbn:hover{background:var(--btn-h)}.tbn.pr{background:var(--btn-p);color:#fff;border-color:var(--btn-p)}.tbn.pr:hover{background:var(--btn-ph);border-color:var(--btn-ph)}
+.mbn{font-size:11.5px;font-weight:500;padding:7px 14px;border-radius:6px;background:var(--btn-bg);color:var(--btn-tx);border:1px solid var(--btn-bdr);transition:background .12s}
+.mbn:hover{background:var(--btn-h)}.mbn.pr{background:var(--btn-p);color:#fff;border-color:var(--btn-p)}.mbn.pr:hover{background:var(--btn-ph);border-color:var(--btn-ph)}
+.mcl{font-size:13px;font-weight:600;width:28px;height:28px;border-radius:6px;background:var(--btn-bg);color:var(--tx2);border:1px solid var(--btn-bdr);display:flex;align-items:center;justify-content:center;transition:background .12s}
+.mcl:hover{background:var(--btn-h)}
+.qc{font-size:10.5px;font-weight:500;padding:5px 11px;border-radius:6px;background:var(--btn-bg);color:var(--btn-tx);border:1px solid var(--btn-bdr);transition:background .12s}
+.qc:hover{background:var(--btn-h);border-color:var(--acc);color:var(--acc)}
+.vt{font-size:11px;font-weight:500;padding:7px 14px;background:var(--btn-bg);color:var(--tx2);border:1px solid var(--btn-bdr);border-bottom:none;border-radius:6px 6px 0 0;margin-right:3px;cursor:pointer;transition:background .12s}
+.vt:hover{background:var(--btn-h)}.vt.on{background:var(--card);color:var(--acc);font-weight:600;border-color:var(--bdr);border-bottom:2px solid var(--acc)}
+.sendbtn{width:32px;height:32px;border-radius:7px;background:var(--acc);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sendbtn:hover{background:var(--acc-h)}.sendbtn:disabled{opacity:.4;cursor:not-allowed}
+.sendbtn svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+/* LAYOUT */
+.frame{display:flex;height:700px;border-radius:12px;overflow:hidden;border:1px solid #C5D5D2}
+.sb{width:214px;background:var(--sb);display:flex;flex-direction:column;flex-shrink:0}
+.sb-logo{padding:14px 14px 10px;border-bottom:1px solid var(--sb-bdr)}
+.sb-mark{display:flex;align-items:center;gap:9px}
+.sb-iw{width:30px;height:30px;background:var(--acc);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-iw svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+.sb-nm{font-size:13.5px;font-weight:700;color:var(--sb-txa)}
+.sb-tg{font-size:9.5px;color:rgba(168,216,223,.45);margin-top:1px}
+.sb-ping{margin:9px 10px 0;padding:5px 10px;background:rgba(29,158,117,.17);border-radius:6px;display:flex;align-items:center;gap:6px}
+.sb-dot{width:6px;height:6px;border-radius:50%;background:#5DCAA5;flex-shrink:0}
+.sb-ptx{font-size:10px;color:#5DCAA5}
+.sb-nav{flex:1;overflow-y:auto;padding:4px 0 10px}
+.sb-sec{font-size:9px;font-weight:700;color:rgba(168,216,223,.28);text-transform:uppercase;letter-spacing:.1em;padding:12px 14px 4px}
+.sb-row{display:flex;align-items:center;gap:9px;padding:7px 12px;cursor:pointer;transition:background .1s;position:relative}
+.sb-row:hover{background:rgba(255,255,255,.06)}.sb-row.on{background:var(--sb-act)}
+.sb-row.on::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--acc)}
+.sb-ico{width:15px;height:15px;flex-shrink:0;opacity:.5}.sb-row.on .sb-ico{opacity:1}
+.sb-lbl{font-size:12px;color:var(--sb-txt);flex:1}.sb-row.on .sb-lbl{color:var(--sb-txa);font-weight:500}
+.sb-num{font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:20px}
+.sn-r{background:rgba(220,60,60,.28);color:#FFAAAA}
+.sn-a{background:rgba(190,130,0,.28);color:#FFCC77}
+.sn-t{background:rgba(29,158,117,.28);color:#5DCAA5}
+.sb-pulse{width:8px;height:8px;border-radius:50%;background:#FF6B6B;flex-shrink:0;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+.sb-foot{padding:12px 14px;border-top:1px solid var(--sb-bdr);display:flex;align-items:center;gap:8px}
+.sb-av{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--sb-txa)}
+.sb-un{font-size:11px;font-weight:500;color:var(--sb-txt)}.sb-ur{font-size:10px;color:rgba(168,216,223,.35)}
+.main{flex:1;background:var(--page);display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.topbar{background:var(--card);border-bottom:1px solid var(--bdr);padding:0 18px;height:50px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tb-tit{font-size:13px;font-weight:700;color:var(--tx);flex:1}
+.tb-bc{font-size:11px;color:var(--tx3)}
+.tb-sep{color:var(--bdr);margin:0 3px}
+.ca{flex:1;overflow-y:auto;padding:14px 16px}
+.panel{background:var(--card);border:1px solid var(--bdr);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.ph{padding:11px 14px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pt{font-size:12.5px;font-weight:600;color:var(--tx)}.ps{font-size:10.5px;color:var(--tx3);margin-top:1px}
+.pb{padding:13px 14px}
+.mrow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}
+.mc{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:11px 13px}
+.mc.ac{border-left:3px solid var(--acc);padding-left:11px}.mc.dn{border-left:3px solid #C93B3B}.mc.wn{border-left:3px solid #D08B00}
+.ml{font-size:9.5px;color:var(--tx3);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.mv{font-size:21px;font-weight:700;color:var(--tx);line-height:1}.ms{font-size:10px;color:var(--tx3);margin-top:3px}
+.tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.tbl th{color:var(--tx3);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:8px 10px;border-bottom:1px solid var(--bdr);text-align:left}
+.tbl td{padding:9px 10px;border-bottom:1px solid #EEF2F1;color:var(--tx);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}.tbl tbody tr:hover td{background:#F7FAFA;cursor:pointer}
+.badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.br{background:var(--red-bg);color:var(--red-tx)}.ba{background:var(--amb-bg);color:var(--amb-tx)}
+.bg{background:var(--grn-bg);color:var(--grn-tx)}.bt{background:var(--tel-bg);color:var(--tel-tx)}.bgy{background:var(--gry-bg);color:var(--gry-tx)}
+.mono{font-family:'SF Mono',Consolas,monospace;font-size:10.5px;color:var(--tx2)}
+/* MODAL */
+.mo{position:absolute;inset:0;background:rgba(2,28,34,.52);display:flex;align-items:center;justify-content:center;z-index:100;border-radius:12px}
+.md{background:var(--card);border-radius:12px;width:560px;max-height:92%;overflow-y:auto;border:1px solid var(--bdr)}
+.mh{padding:14px 18px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card);z-index:1}
+.mt{font-size:13.5px;font-weight:700;color:var(--tx)}.mb{padding:16px 18px}
+.msec{font-size:9.5px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 7px}.msec:first-child{margin-top:0}
+.mf{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid #F0F4F3}.mf:last-child{border-bottom:none}
+.mfl{font-size:11.5px;color:var(--tx3)}.mfv{font-size:11.5px;color:var(--tx);font-weight:500;text-align:right}
+.ma{padding:12px 18px;border-top:1px solid var(--bdr);display:flex;gap:8px;justify-content:flex-end;background:var(--page);border-radius:0 0 12px 12px}
+/* EXCEPTION CARDS */
+.exc-card{border-radius:10px;border:1px solid;margin-bottom:12px;overflow:hidden;transition:box-shadow .15s}
+.exc-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.exc-crit{background:var(--exc-crit);border-color:var(--exc-crit-bdr);border-left:4px solid var(--exc-crit-lft)}
+.exc-high{background:var(--exc-high);border-color:var(--exc-high-bdr);border-left:4px solid var(--exc-high-lft)}
+.exc-med{background:var(--exc-med);border-color:var(--exc-med-bdr);border-left:4px solid var(--exc-med-lft)}
+.exc-head{padding:12px 14px 10px;cursor:pointer;display:flex;align-items:flex-start;gap:10px}
+.exc-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.exc-icon-crit{background:rgba(201,59,59,.15)}
+.exc-icon-high{background:rgba(208,139,0,.15)}
+.exc-icon-med{background:rgba(29,158,117,.15)}
+.exc-title{font-size:12.5px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.exc-sub{font-size:11px;color:var(--tx2);line-height:1.5}
+.exc-meta{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap}
+.exc-toggle{margin-left:auto;width:24px;height:24px;border-radius:6px;background:rgba(0,0,0,.06);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s;cursor:pointer}
+.exc-toggle svg{width:12px;height:12px;fill:none;stroke:var(--tx2);stroke-width:2;stroke-linecap:round;transition:transform .2s}
+.exc-toggle.open svg{transform:rotate(180deg)}
+.exc-body{border-top:1px solid rgba(0,0,0,.07);padding:12px 14px;display:none}
+.exc-body.open{display:block}
+.exc-analysis{font-size:11.5px;color:var(--tx);line-height:1.65;margin-bottom:12px;padding:10px 12px;background:rgba(255,255,255,.6);border-radius:7px;border:1px solid rgba(0,0,0,.06)}
+.exc-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.exc-path{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:10px 11px;cursor:pointer;transition:border-color .15s}
+.exc-path:hover{border-color:#9EC0BA;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.exc-path.selected{border-color:var(--acc);background:var(--acc-lt)}
+.path-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;display:inline-block;padding:2px 6px;border-radius:4px}
+.tag-fast{background:#FEE9E9;color:#7A1F1F}
+.tag-safe{background:#FEF3DC;color:#7A4500}
+.tag-smart{background:#E1F5EE;color:#025064}
+.path-title{font-size:11.5px;font-weight:700;color:var(--tx);margin-bottom:4px}
+.path-desc{font-size:10.5px;color:var(--tx2);line-height:1.5;margin-bottom:8px}
+.path-impact{font-size:10px;color:var(--tx3);display:flex;align-items:center;gap:4px;margin-bottom:8px}
+.path-act{width:100%;font-size:10.5px;font-weight:600;padding:5px 8px;border-radius:5px;background:var(--btn-bg);color:var(--btn-tx);border:1px solid var(--btn-bdr);cursor:pointer;font-family:inherit;transition:all .12s;text-align:center}
+.path-act:hover{background:var(--btn-p);color:#fff;border-color:var(--btn-p)}
+.exc-scan{display:flex;align-items:center;gap:10px;padding:14px 16px;background:linear-gradient(135deg,rgba(2,80,100,.05),rgba(29,158,117,.08));border:1px solid rgba(29,158,117,.2);border-radius:10px;margin-bottom:14px}
+.exc-scan-icon{width:36px;height:36px;border-radius:9px;background:var(--sb);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.exc-scan-icon svg{width:18px;height:18px;fill:none;stroke:#5DCAA5;stroke-width:1.8;stroke-linecap:round}
+.exc-scan-txt{flex:1}
+.exc-scan-title{font-size:12.5px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.exc-scan-sub{font-size:11px;color:var(--tx3)}
+.exc-loading{display:flex;gap:4px;align-items:center;padding:4px 0}
+.exc-loading span{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:td 1.2s infinite}
+.exc-loading span:nth-child(2){animation-delay:.2s}.exc-loading span:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,80%,100%{opacity:.25}40%{opacity:1}}
+/* CHAT */
+.msgs{flex:1;display:flex;flex-direction:column;gap:9px;overflow-y:auto;padding:4px 0 8px;min-height:180px}
+.cm{display:flex;gap:7px;align-items:flex-start}.cm.u{flex-direction:row-reverse}
+.cav{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
+.cav.ag{background:var(--sb);color:var(--sb-txt)}.cav.us{background:#E5ECEB;color:var(--tx2)}
+.bub{max-width:85%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.6}
+.bub.ag{background:var(--card);border:1px solid var(--bdr);color:var(--tx)}.bub.us{background:var(--sb);color:var(--sb-txa)}
+.tdots{display:flex;gap:3px;align-items:center;padding:2px 0}
+.tdots span{width:5px;height:5px;border-radius:50%;background:var(--tx3);animation:td 1.2s infinite}
+.tdots span:nth-child(2){animation-delay:.2s}.tdots span:nth-child(3){animation-delay:.4s}
+.inrow{display:flex;gap:7px;padding-top:9px;border-top:1px solid var(--bdr);margin-top:auto}
+.inwrap{flex:1;display:flex;align-items:center;border:1px solid var(--bdr);border-radius:8px;background:var(--card);padding:0 10px;gap:8px}
+.inwrap:focus-within{border-color:var(--acc)}
+.inp{flex:1;border:none;outline:none;font-size:12px;color:var(--tx);background:transparent;padding:8px 0;font-family:inherit}
+.ac2{border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:border-color .15s}
+.ac2:hover{border-color:#9EC0BA}.ac2.ug{border-left:3px solid #C93B3B}.ac2.md2{border-left:3px solid #D08B00}
+.acr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.acn{font-size:12.5px;font-weight:700;color:var(--tx)}.acm{font-size:11px;color:var(--tx3);margin-top:3px;line-height:1.55}
+.aca{font-size:16px;font-weight:700;color:var(--tx);text-align:right}
+.aacts{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px;padding-top:9px;border-top:1px solid #EEF2F1}
+.ep{background:var(--page);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px}
+.efl{display:flex;gap:8px;margin-bottom:5px;align-items:baseline}
+.elbl{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;min-width:40px}
+.eval{color:var(--tx);font-size:11.5px}.ediv{border:none;border-top:1px solid var(--bdr);margin:9px 0}
+.ebody{font-size:11.5px;color:var(--tx);line-height:1.7}
+.vtrow{display:flex;gap:3px;margin-bottom:-1px;padding:0 14px}
+.alert{background:#FFF8E6;border:1px solid #F0D890;border-radius:8px;padding:9px 13px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:10px}
+.alert.dng{background:#FEF0F0;border-color:#F5B8B8}
+.at{font-size:11.5px;color:var(--amb-tx);font-weight:500}.alert.dng .at{color:var(--red-tx)}
+.scw{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--bdr);border-radius:6px;margin-bottom:5px;cursor:pointer;transition:all .1s}
+.scw:hover{background:var(--page)}.scw.sl{background:var(--acc-lt);border-color:var(--acc)}
+.scb{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--bdr);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .1s}
+.scw.sl .scb{background:var(--acc);border-color:var(--acc)}
+.scc{display:none;width:9px;height:9px}.scw.sl .scc{display:block}
+</style>
+
+<h2 class="sr-only">ProcureIQ v5 — AI exception engine with multi-path resolution</h2>
+
+<div class="frame" id="frame" style="position:relative">
+  <div class="sb">
+    <div class="sb-logo">
+      <div class="sb-mark">
+        <div class="sb-iw"><svg viewBox="0 0 16 16"><path d="M2 4h12M2 8h8M2 12h5"/></svg></div>
+        <div><div class="sb-nm">ProcureIQ</div><div class="sb-tg">Powered by Epicor Kinetic</div></div>
+      </div>
+      <div class="sb-ping"><span class="sb-dot"></span><span class="sb-ptx">Connected · MfgSys live</span></div>
+    </div>
+    <div class="sb-nav">
+      <div class="sb-sec">Intelligence</div>
+      <div class="sb-row" onclick="go('chat',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><path d="M14 5H2a1 1 0 00-1 1v5a1 1 0 001 1h1v2l3-2h8a1 1 0 001-1V6a1 1 0 00-1-1z"/></svg>
+        <span class="sb-lbl">Agent chat</span>
+      </div>
+      <div class="sb-row on" onclick="go('exceptions',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12h.01"/></svg>
+        <span class="sb-lbl">Exceptions</span>
+        <span class="sb-pulse"></span>
+      </div>
+      <div class="sb-sec">Procurement</div>
+      <div class="sb-row" onclick="go('suggestions',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6h6M5 9h4"/></svg>
+        <span class="sb-lbl">PO suggestions</span><span class="sb-num sn-a">20</span>
+      </div>
+      <div class="sb-row" onclick="go('approvals',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><path d="M13 5l-6 6-3-3"/><circle cx="8" cy="8" r="6"/></svg>
+        <span class="sb-lbl">Approvals</span><span class="sb-num sn-r">2</span>
+      </div>
+      <div class="sb-row" onclick="go('overdue',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 2"/></svg>
+        <span class="sb-lbl">Overdue</span><span class="sb-num sn-r">13</span>
+      </div>
+      <div class="sb-sec">Operations</div>
+      <div class="sb-row" onclick="go('receipts',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="1" width="10" height="14" rx="1"/><path d="M6 5h4M6 8h4M6 11h2"/></svg>
+        <span class="sb-lbl">Receipts</span><span class="sb-num sn-t">20</span>
+      </div>
+      <div class="sb-row" onclick="go('vendors',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="12" height="7" rx="1"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+        <span class="sb-lbl">Vendors</span>
+      </div>
+      <div class="sb-row" onclick="go('comms',this)">
+        <svg class="sb-ico" viewBox="0 0 16 16" fill="none" stroke="#A8D8DF" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="4" width="14" height="10" rx="1"/><path d="M1 7l7 4 7-4"/></svg>
+        <span class="sb-lbl">Vendor comms</span>
+      </div>
+    </div>
+    <div class="sb-foot">
+      <div class="sb-av">HL</div>
+      <div><div class="sb-un">Howard Low</div><div class="sb-ur">Lead Buyer · HLOW</div></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <div style="flex:1"><div class="tb-tit" id="tbt">Exceptions</div><div class="tb-bc">Procurement<span class="tb-sep">/</span><span id="tbc">Intelligence</span></div></div>
+      <div style="display:flex;gap:7px" id="tba"></div>
+    </div>
+    <div class="ca" id="ca"></div>
+  </div>
+  <div id="mr"></div>
+</div>
+
+<script>
+const T=new Date('2026-05-01');
+const fmt=n=>Math.round(n).toLocaleString();
+const fD=d=>new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'});
+const dA=d=>Math.floor((T-new Date(d))/86400000);
+const usd=(q,p)=>p>0?'$'+fmt(q*p):'—';
+
+const SUGG=[{SugNum:18600,BuyerID:"EDDIE",DueDate:"2014-06-16T00:00:00Z",XRelQty:100,LineDesc:"Consolidated/Central AP Part",UnitPrice:6.5,PartNum:"CP100",VendorID:"HILL",Name:"Hillman Supply Company",OrderByDate:"2014-06-16T00:00:00Z",Plant:"MfgSys",SugReason:"R",TermsCode:"NET30"},{SugNum:61587,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:100,LineDesc:"Special Frame Rail",UnitPrice:0,PartNum:"DCD-100-SP-C",VendorID:"HADES",Name:"Hades Heat Treating",OrderByDate:"2026-02-02T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:"NET30"},{SugNum:61588,BuyerID:"HLOW",DueDate:"2026-05-13T00:00:00Z",XRelQty:200,LineDesc:"Hinge Gauge",UnitPrice:2,PartNum:"DCD-300-HG",VendorID:"RFPAINT",Name:"Rainforest Painting Inc.",OrderByDate:"2026-05-01T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:"NET30"},{SugNum:61589,BuyerID:"HLOW",DueDate:"2026-05-21T00:00:00Z",XRelQty:4000,LineDesc:"Screw Machine Part-Chute Plug",UnitPrice:2,PartNum:"DCD-300-SCR-S",VendorID:"RFPAINT",Name:"Rainforest Painting Inc.",OrderByDate:"2026-05-18T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:"NET30"},{SugNum:61590,BuyerID:"HLOW",DueDate:"2026-05-21T00:00:00Z",XRelQty:4000,LineDesc:"Screw Machine Part-Chute Plug",UnitPrice:2,PartNum:"DCD-300-SCR-S",VendorID:"RFPAINT",Name:"Rainforest Painting Inc.",OrderByDate:"2026-05-18T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:"NET30"},{SugNum:61591,BuyerID:"HLOW",DueDate:"2026-05-21T00:00:00Z",XRelQty:2000,LineDesc:"Screw Machine Part-Chute Plug",UnitPrice:2,PartNum:"DCD-300-SCR-S",VendorID:"RFPAINT",Name:"Rainforest Painting Inc.",OrderByDate:"2026-05-18T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:"NET30"},{SugNum:61592,BuyerID:"HLOW",DueDate:"2026-04-30T00:00:00Z",XRelQty:1,LineDesc:"Installation",UnitPrice:5000,PartNum:"Installation",VendorID:"HAAS",Name:"HAAS Factory Service",OrderByDate:"2026-04-24T00:00:00Z",Plant:"MfgSys",SugReason:"D",TermsCode:"NET30"},{SugNum:61593,BuyerID:"HLOW",DueDate:"2026-05-07T00:00:00Z",XRelQty:550,LineDesc:"Pegging Board",UnitPrice:4,PartNum:"KLL-678-POO",VendorID:"MPLATE",Name:"Minneapolis Plating",OrderByDate:"2026-05-04T00:00:00Z",Plant:"MfgSys",SugReason:"S",TermsCode:"NET30"},{SugNum:61594,BuyerID:"HLOW",DueDate:"2026-04-30T00:00:00Z",XRelQty:1,LineDesc:"Phase Manufacture",UnitPrice:1200,PartNum:"Phase 3.0",VendorID:"HADES",Name:"Hades Heat Treating",OrderByDate:"2026-04-24T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:"NET30"},{SugNum:61595,BuyerID:"HLOW",DueDate:"2026-05-06T00:00:00Z",XRelQty:848,LineDesc:"Item 5667",UnitPrice:55,PartNum:"060-5667",VendorID:"NORD",Name:"Nordstrom Supplies",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"R",TermsCode:"NET15"},{SugNum:61596,BuyerID:"HLOW",DueDate:"2026-05-04T00:00:00Z",XRelQty:100,LineDesc:"Item 2500",UnitPrice:0,PartNum:"100-2500",VendorID:"USDIST",Name:"United States Distribution",OrderByDate:"2026-04-27T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:"NET30"},{SugNum:61597,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:4800,LineDesc:"Mfg Item A1 White",UnitPrice:0.75,PartNum:"A1",VendorID:"HADES",Name:"Hades Heat Treating",OrderByDate:"2026-02-03T00:00:00Z",Plant:"MfgSys",SugReason:"R",TermsCode:"NET30"},{SugNum:61598,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:800,LineDesc:"Mfg Item A1 White",UnitPrice:0.75,PartNum:"A1",VendorID:"HADES",Name:"Hades Heat Treating",OrderByDate:"2026-03-06T00:00:00Z",Plant:"MfgSys",SugReason:"R",TermsCode:"NET30"},{SugNum:61599,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:20,LineDesc:"Hydraulics",UnitPrice:0,PartNum:"APM-HYDRA",VendorID:"",Name:"",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:""},{SugNum:61600,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:20,LineDesc:"Hydraulics",UnitPrice:0,PartNum:"APM-HYDRA",VendorID:"",Name:"",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:""},{SugNum:61601,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:25,LineDesc:"Molded Part",UnitPrice:0,PartNum:"APM-MOLD",VendorID:"",Name:"",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:""},{SugNum:61602,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:24,LineDesc:"Molded Part",UnitPrice:0,PartNum:"APM-MOLD",VendorID:"",Name:"",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:""},{SugNum:61603,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:35,LineDesc:"Steel",UnitPrice:0,PartNum:"APM-SS-125",VendorID:"",Name:"",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:""},{SugNum:61604,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:35,LineDesc:"Steel",UnitPrice:0,PartNum:"APM-SS-125",VendorID:"",Name:"",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:""},{SugNum:61605,BuyerID:"HLOW",DueDate:"2026-04-29T00:00:00Z",XRelQty:15,LineDesc:"Technology",UnitPrice:0,PartNum:"APM-TECH",VendorID:"",Name:"",OrderByDate:"2026-04-29T00:00:00Z",Plant:"MfgSys",SugReason:"",TermsCode:""}];
+const APVS=[{PONum:4320,MsgType:"2",MsgDate:"2024-05-31T00:00:00Z",ApproverResponse:"APPROVED",VendorName:"ABC Metals",BuyerName:"Howard Low",BuyerLimit:10000,POAmt:16400,ApvAmt:16400,MsgTo:"HLOW",MsgFrom:"HCrabtre"},{PONum:4494,MsgType:"2",MsgDate:"2024-05-31T00:00:00Z",ApproverResponse:"APPROVED",VendorName:"ABC Metals",BuyerName:"Howard Low",BuyerLimit:10000,POAmt:30000,ApvAmt:31000,MsgTo:"HLOW",MsgFrom:"HCrabtre"},{PONum:4497,MsgType:"3",MsgDate:"2017-05-05T00:00:00Z",ApproverResponse:"MANUALLY CLOSED",VendorName:"ABC Metals",BuyerName:"Howard Low",BuyerLimit:10000,POAmt:30000,ApvAmt:30000,MsgTo:"HCrabtre",MsgFrom:"HLOW"},{PONum:4503,MsgType:"1",MsgDate:"2024-05-31T00:00:00Z",ApproverResponse:"",VendorName:"HAAS Factory Service",BuyerName:"Howard Low",BuyerLimit:10000,POAmt:13500,ApvAmt:0,MsgTo:"HCrabtre",MsgFrom:"HLOW"},{PONum:4509,MsgType:"3",MsgDate:"2020-11-13T00:00:00Z",ApproverResponse:"MANUALLY CLOSED",VendorName:"ABC Metals",BuyerName:"Howard Low",BuyerLimit:10000,POAmt:122376,ApvAmt:122376,MsgTo:"HCrabtre",MsgFrom:"HLOW"},{PONum:4537,MsgType:"1",MsgDate:"2026-02-23T00:00:00Z",ApproverResponse:"",VendorName:"ABC Metals",BuyerName:"Howard Low",BuyerLimit:10000,POAmt:812736,ApvAmt:0,MsgTo:"HCrabtre",MsgFrom:"HLOW"}];
+const RCPTS=[{VendorNum:31,PackSlip:"6549849846541654",ReceiptDate:"2026-04-28T00:00:00Z"},{VendorNum:40,PackSlip:"4533",ReceiptDate:"2026-01-30T00:00:00Z"},{VendorNum:1,PackSlip:"4532-001",ReceiptDate:"2024-06-25T00:00:00Z"},{VendorNum:1,PackSlip:"4530-001",ReceiptDate:"2024-06-11T00:00:00Z"},{VendorNum:20,PackSlip:"4529-001",ReceiptDate:"2024-06-11T00:00:00Z"},{VendorNum:20,PackSlip:"4526EPIC03-001",ReceiptDate:"2023-11-29T00:00:00Z"},{VendorNum:20,PackSlip:"4527EPIC03-001",ReceiptDate:"2023-11-29T00:00:00Z"},{VendorNum:30,PackSlip:"4524EPIC03-001",ReceiptDate:"2023-06-16T00:00:00Z"},{VendorNum:40,PackSlip:"4523EPIC03-001",ReceiptDate:"2023-06-16T00:00:00Z"},{VendorNum:31,PackSlip:"1234534",ReceiptDate:"2023-06-09T00:00:00Z"}];
+
+const pendA=APVS.filter(a=>a.MsgType==='1'&&!a.ApproverResponse);
+const odList=SUGG.filter(r=>dA(r.OrderByDate)>0).sort((a,b)=>dA(b.OrderByDate)-dA(a.OrderByDate));
+const noV=SUGG.filter(r=>!r.VendorID);
+const vmap={};SUGG.filter(r=>r.VendorID).forEach(r=>{if(!vmap[r.VendorID])vmap[r.VendorID]={id:r.VendorID,name:r.Name,n:0,v:0};vmap[r.VendorID].n++;vmap[r.VendorID].v+=r.XRelQty*(r.UnitPrice||0);});
+const vends=Object.values(vmap).sort((a,b)=>b.n-a.n);
+const totV=SUGG.filter(r=>r.UnitPrice>0).reduce((s,r)=>s+r.XRelQty*r.UnitPrice,0);
+
+// PRE-BUILT EXCEPTIONS from live Kinetic data
+const EXCEPTIONS=[
+  {
+    id:'EX001',severity:'crit',icon:'🚨',
+    title:'$812,736 PO stalled in approval — 67 days with no response',
+    subtitle:'PO 4537 · ABC Metals · Submitted Feb 23, 2026 · Approver: H. Crabtree (HCrabtre)',
+    badges:[{cls:'br',txt:'67 days overdue'},{cls:'br',txt:'$812,736 at risk'},{cls:'ba',txt:'Approval blocked'}],
+    analysis:`PO 4537 to ABC Metals for $812,736 has been awaiting approval from H. Crabtree since February 23, 2026 — 67 days with zero response. The buyer limit for Howard Low is $10,000, meaning this PO exceeds the threshold by $802,736 and legally requires sign-off before it can be processed. Without resolution, this PO cannot be converted to an active purchase order, creating a direct risk to production timelines and vendor relationships. This is the single highest-value item at risk in the current procurement pipeline.`,
+    paths:[
+      {tag:'tag-fast',tagTxt:'Fastest',title:'Direct escalation to approver',desc:'Send an urgent escalation email to H. Crabtree with a 24-hour response deadline and cc department leadership.',impact:'Resolves in 1–2 days if responded to',action:'Draft escalation email',fn:"qa('Draft a firm but professional escalation email to H. Crabtree (HCrabtre) about PO 4537 for ABC Metals ($812,736) that has been pending 67 days. Include a 24-hour response deadline.')"},
+      {tag:'tag-safe',tagTxt:'Safest',title:'Request temporary limit increase',desc:'Submit a formal request to raise Howard Low\'s approval limit for this PO specifically, with documented business justification.',impact:'Audit trail preserved, lowest risk',action:'Draft limit increase request',fn:"qa('Draft a formal request to temporarily raise buyer Howard Low limit above $812,736 for PO 4537 with ABC Metals, with business justification for the exception.')"},
+      {tag:'tag-smart',tagTxt:'Smartest',title:'Split PO into approved tranches',desc:'Break PO 4537 into multiple POs each under $10,000 to fall within Howard Low\'s existing authority. Requires vendor agreement.',impact:'Bypasses approver entirely',action:'Plan PO split strategy',fn:"qa('How should I split PO 4537 for $812,736 with ABC Metals into smaller POs that fall within a $10,000 buyer limit? Outline the line item strategy.')"}
+    ]
+  },
+  {
+    id:'EX002',severity:'crit',icon:'🔥',
+    title:'Hades Heat Treating: 5 suggestions, 3 critically overdue — vendor concentration risk',
+    subtitle:'Sugg #61587, 61594, 61597, 61598 · OrderByDate 87–88 days overdue · Hades Heat Treating (HADES)',
+    badges:[{cls:'br',txt:'88d overdue'},{cls:'br',txt:'5 open suggestions'},{cls:'ba',txt:'Single-source risk'}],
+    analysis:`Hades Heat Treating holds 5 open PO suggestions, more than any other vendor in the system. Three of these have severely overdue order-by dates — the oldest (Sug 61587, Special Frame Rail) is 88 days past due, and Sug 61597 (4,800 units Mfg Item A1 White) has been outstanding since February 3rd. This single-vendor concentration means any delivery failure from Hades would simultaneously affect multiple production lines. The pattern of persistent overdue dates suggests either a systemic communication breakdown or a capacity issue on the vendor's side.`,
+    paths:[
+      {tag:'tag-fast',tagTxt:'Fastest',title:'Immediate multi-item vendor call',desc:'Contact Hades Heat Treating directly to get status on all 5 open items simultaneously. Request a firm delivery schedule within 48 hours.',impact:'Fastest path to visibility',action:'Draft urgent vendor contact',fn:"qa('Draft an urgent email to Hades Heat Treating (HADES) covering all 5 of their open suggestions: Special Frame Rail (61587, 88d overdue), Phase Manufacture (61594, 7d overdue), Mfg Item A1 White x4800 (61597, 87d overdue), Mfg Item A1 White x800 (61598, 56d overdue), and Installation. Request delivery confirmation within 48 hours.')"},
+      {tag:'tag-safe',tagTxt:'Safest',title:'Dual-source critical items',desc:'Identify alternative suppliers for the most overdue items (Special Frame Rail, A1 White) and begin parallel qualification to reduce single-source dependency.',impact:'Reduces long-term vendor risk',action:'Build alternative source plan',fn:"qa('Which Hades Heat Treating items (Special Frame Rail DCD-100-SP-C, Mfg Item A1 A1) pose the highest single-source risk? What type of alternative vendors should I qualify and what steps would that take?')"},
+      {tag:'tag-smart',tagTxt:'Smartest',title:'Consolidate into one blanket PO with milestones',desc:'Convert all 5 Hades suggestions into a single blanket PO with milestone delivery dates and penalty clauses for late delivery.',impact:'Improves vendor accountability',action:'Draft blanket PO structure',fn:"qa('How should I structure a blanket purchase order with Hades Heat Treating covering all 5 open suggestions, with milestone delivery dates and accountability terms for the overdue items?')"}
+    ]
+  },
+  {
+    id:'EX003',severity:'crit',icon:'⛔',
+    title:'8 suggestions completely unblocked — no vendor assigned, production at risk',
+    subtitle:'Parts: APM-HYDRA, APM-MOLD, APM-SS-125, APM-TECH · All past due · MfgSys plant',
+    badges:[{cls:'br',txt:'8 unassigned items'},{cls:'br',txt:'All past due'},{cls:'ba',txt:'Production blocked'}],
+    analysis:`Eight open PO suggestions have no vendor assigned at all — Hydraulics (APM-HYDRA, x40 units), Molded Parts (APM-MOLD, x49 units), Steel (APM-SS-125, x70 units), and Technology (APM-TECH, x15 units). All have order-by and due dates that have already passed, meaning the need for these items is active right now. Without a vendor, no PO can be created, no procurement action can be taken, and no delivery can be scheduled. This is a complete procurement dead-end for 8 lines that are actively blocking production.`,
+    paths:[
+      {tag:'tag-fast',tagTxt:'Fastest',title:'Emergency vendor assignment from qualified list',desc:'Query Kinetic\'s approved vendor master for each part category and assign the fastest available qualified supplier immediately.',impact:'Unblocks all 8 lines today',action:'Find qualified vendors',fn:"qa('For each of these unassigned part categories — Hydraulics (APM-HYDRA), Molded Parts (APM-MOLD), Steel (APM-SS-125), Technology (APM-TECH) — what type of vendors should I look for in our approved supplier base and what questions should I ask to qualify them quickly?')"},
+      {tag:'tag-safe',tagTxt:'Safest',title:'Engineering review before sourcing',desc:'Flag the 8 unassigned items to engineering to confirm specs haven\'t changed before placing emergency orders with a potentially incorrect supplier.',impact:'Prevents mis-sourcing cost',action:'Draft engineering review request',fn:"qa('Draft an internal message to the engineering team requesting urgent spec confirmation for 8 unassigned procurement items: Hydraulics (APM-HYDRA x40), Molded Part (APM-MOLD x49), Steel (APM-SS-125 x70), Technology (APM-TECH x15) before emergency vendor sourcing.')"},
+      {tag:'tag-smart',tagTxt:'Smartest',title:'Group by category and RFQ immediately',desc:'Group the 8 items by commodity type and issue a rapid RFQ to 2–3 pre-approved vendors per category, with a 24-hour quote deadline.',impact:'Competitive pricing under time pressure',action:'Build RFQ package',fn:"qa('Help me structure a rapid RFQ package for the 8 unassigned procurement items grouped by category (Hydraulics, Molded Parts, Steel, Technology). What should the RFQ include and what lead time should I specify given the items are already past due?')"}
+    ]
+  },
+  {
+    id:'EX004',severity:'high',icon:'⚠️',
+    title:'PO 4503 — HAAS Factory Service approval pending since May 2024',
+    subtitle:'PO 4503 · $13,500 · Installation · Submitted May 31, 2024 · 336 days without response',
+    badges:[{cls:'br',txt:'336 days stalled'},{cls:'ba',txt:'$13,500'},{cls:'bgy',txt:'May need closure'}],
+    analysis:`PO 4503 for HAAS Factory Service ($13,500, Installation) has been in pending approval status for 336 days — nearly a full year. Unlike PO 4537 which is a recent submission, this PO may represent a need that has already been fulfilled through other means, cancelled informally, or simply forgotten. Leaving it in an open approval state creates audit risk and clutters the active queue. The priority here is to determine if this installation has already happened, and if so, formally close or cancel the PO in Kinetic.`,
+    paths:[
+      {tag:'tag-fast',tagTxt:'Fastest',title:'Confirm with HAAS if work was completed',desc:'Contact HAAS Factory Service directly to determine if the installation referenced in PO 4503 was ever performed, and under what terms.',impact:'Quick clarity in 1 call',action:'Draft HAAS status inquiry',fn:"qa('Draft a brief professional email to HAAS Factory Service asking whether the installation referenced in PO 4503 ($13,500) submitted May 2024 was ever completed, and if so, under what agreement it was billed.')"},
+      {tag:'tag-safe',tagTxt:'Safest',title:'Internal review with requesting department',desc:'Check with the department that originally requested the HAAS installation to determine if the need still exists, was completed, or was abandoned.',impact:'Ensures correct internal record',action:'Draft internal inquiry',fn:"qa('Draft an internal email to determine the current status of the HAAS Factory Service installation (PO 4503, $13,500) that has been in approval since May 2024 — was it completed, cancelled, or is it still needed?')"},
+      {tag:'tag-smart',tagTxt:'Smartest',title:'Formally close and re-open if still needed',desc:'Manually close PO 4503 in Kinetic to clear the approval queue, then create a fresh PO if the installation is still required — resetting the approval workflow with current documentation.',impact:'Cleans audit trail completely',action:'Plan closure workflow',fn:"qa('What is the recommended process in Epicor Kinetic for manually closing a stalled PO approval (PO 4503) that is nearly a year old, and what documentation should I prepare before doing so?')"}
+    ]
+  },
+  {
+    id:'EX005',severity:'high',icon:'📅',
+    title:'SugNum 18600 — order-by date June 2014, over 12 years overdue',
+    subtitle:'CP100 · Consolidated/Central AP Part · Hillman Supply Company · EDDIE buyer · $650 est. value',
+    badges:[{cls:'br',txt:'4,335 days overdue'},{cls:'ba',txt:'Legacy suggestion'},{cls:'bgy',txt:'Buyer: EDDIE'}],
+    analysis:`Suggestion 18600 for part CP100 (Consolidated/Central AP Part) from Hillman Supply Company has an order-by date of June 16, 2014 — over 12 years ago. This is almost certainly a legacy suggestion that was never closed when the need was resolved, the part was superseded, or the buyer left the organization. Buyer EDDIE may no longer be active. Leaving this open pollutes the suggestion queue, inflates overdue counts, and creates confusion in reporting. It should be investigated and either fulfilled or formally closed.`,
+    paths:[
+      {tag:'tag-fast',tagTxt:'Fastest',title:'Close the suggestion immediately',desc:'If buyer EDDIE is no longer active or the part is superseded, manually close Sug 18600 in Kinetic to remove it from the active queue without further investigation.',impact:'Cleans queue in minutes',action:'Plan suggestion closure',fn:"qa('What is the Epicor Kinetic process for closing or cancelling an open PO suggestion (SugNum 18600) that appears to be a 12-year-old legacy record that was never actioned?')"},
+      {tag:'tag-safe',tagTxt:'Safest',title:'Verify with Hillman Supply if part still needed',desc:'Contact Hillman Supply Company to determine if CP100 is still a valid part, currently available, and whether there is still a business need.',impact:'Avoids closing something still needed',action:'Draft Hillman verification',fn:"qa('Draft a brief message to Hillman Supply Company asking about the current availability and pricing for part CP100 (Consolidated/Central AP Part), referencing that we have an old open suggestion for 100 units.')"},
+      {tag:'tag-smart',tagTxt:'Smartest',title:'Audit all legacy suggestions from inactive buyers',desc:'Use this as a trigger to audit all suggestions assigned to buyer EDDIE and any other potentially inactive buyer IDs for similar legacy records.',impact:'Prevents future queue pollution',action:'Build legacy audit checklist',fn:"qa('Help me build an audit checklist to identify and clean up legacy PO suggestions in Kinetic — what fields should I check, what age threshold should I use, and how should I document dispositions for audit purposes?')"}
+    ]
+  },
+  {
+    id:'EX006',severity:'med',icon:'📦',
+    title:'Nordstrom Supplies — $46,640 order overdue with no receipt on file',
+    subtitle:'Sug 61595 · Item 5667 (060-5667) · 848 units @ $55 · OrderByDate 2 days overdue',
+    badges:[{cls:'ba',txt:'2 days overdue'},{cls:'ba',txt:'$46,640'},{cls:'bt',txt:'No receipt logged'}],
+    analysis:`Suggestion 61595 for 848 units of Item 5667 from Nordstrom Supplies (est. $46,640) has an order-by date of April 29th — 2 days ago. There is no corresponding receipt logged in the Kinetic receipt system for Nordstrom Supplies (no vendor number match in recent receipts). This could mean the order was placed but not yet received, was never placed at all, or the receipt was not logged correctly. Given the dollar value, this needs prompt clarification before it compounds further.`,
+    paths:[
+      {tag:'tag-fast',tagTxt:'Fastest',title:'Check if order was placed with Nordstrom',desc:'Quickly verify internally whether a PO was actually sent to Nordstrom Supplies for this item, and if so, get a delivery ETA.',impact:'Answers status in under an hour',action:'Check PO placement status',fn:"qa('Help me draft a quick internal note asking Howard Low\'s team to confirm whether PO suggestion 61595 (Item 5667, 848 units, Nordstrom Supplies) was converted to an actual purchase order and if so what the delivery status is.')"},
+      {tag:'tag-safe',tagTxt:'Safest',title:'Contact Nordstrom for order confirmation',desc:'Reach out to Nordstrom Supplies to confirm whether they have an open order from us for 060-5667, and request an updated shipping timeline.',impact:'Vendor-confirmed delivery date',action:'Draft Nordstrom inquiry',fn:"qa('Draft a professional email to Nordstrom Supplies asking them to confirm whether they have an active purchase order from us for part 060-5667 (Item 5667), 848 units, and to provide a current delivery timeline.')"},
+      {tag:'tag-smart',tagTxt:'Smartest',title:'Create PO now with expedited delivery terms',desc:'If no PO was ever placed, immediately convert this suggestion to a PO with expedited shipping terms given the 2-day overdue status.',impact:'Gets material moving today',action:'Create expedited PO',fn:"qa('I need to create an expedited PO for Nordstrom Supplies for 848 units of Item 5667 (060-5667) at $55/unit. What terms and conditions should I include given the order-by date has already passed and we need this urgently?')"}
+    ]
+  }
+];
+
+const SYS=`You are ProcureIQ, a procurement AI for a manufacturer on Epicor Kinetic. Today: May 1 2026.
+PO SUGGESTIONS: ${JSON.stringify(SUGG)}
+APPROVALS: ${JSON.stringify(APVS)}
+RECEIPTS: ${JSON.stringify(RCPTS)}
+Key facts: PO 4537 ($812,736 ABC Metals) pending 67 days. PO 4503 ($13,500 HAAS) pending 336 days. 8 suggestions no vendor. SugNum 18600 OrderByDate June 2014. Hades has 5 suggestions with 3 critically overdue. Nordstrom Sug 61595 $46,640 2 days overdue. All data is live from Kinetic.
+Be concise, professional, specific. Simple HTML tables where helpful. Max 5 sentences or short table. End with one recommended action.`;
+
+async function ask(q){
+  const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:900,system:SYS,messages:[{role:'user',content:q}]})});
+  const d=await r.json();return d.content?.[0]?.text||'No response.';
+}
+
+function setTop(t,c,acts=[]){
+  document.getElementById('tbt').textContent=t;document.getElementById('tbc').textContent=c;
+  document.getElementById('tba').innerHTML=acts.map(a=>`<button class="tbn${a.pr?' pr':''}" onclick="${a.fn}">${a.lbl}</button>`).join('');
+}
+function closeM(){document.getElementById('mr').innerHTML='';}
+function showM(h){document.getElementById('mr').innerHTML=`<div class="mo" onclick="if(event.target===this)closeM()"><div class="md">${h}</div></div>`;}
+
+function go(v,el){
+  document.querySelectorAll('.sb-row').forEach(n=>n.classList.remove('on'));el.classList.add('on');
+  ({chat:rChat,exceptions:rExc,suggestions:rSuggs,approvals:rApvs,overdue:rOD,receipts:rRcpts,vendors:rVends,comms:rComms})[v]();
+}
+
+/* ── EXCEPTIONS ── */
+function rExc(){
+  setTop('Critical exceptions','Intelligence',[{lbl:'Re-scan Kinetic',pr:false,fn:"rExc()"},{lbl:'Export exception report',pr:true,fn:""}]);
+  const critN=EXCEPTIONS.filter(e=>e.severity==='crit').length;
+  const highN=EXCEPTIONS.filter(e=>e.severity==='high').length;
+  const medN=EXCEPTIONS.filter(e=>e.severity==='med').length;
+  const totalRisk=EXCEPTIONS.reduce((s,e)=>s+(e.id==='EX001'?812736:e.id==='EX002'?4800*.75+1200+0:e.id==='EX006'?46640:0),0);
+  document.getElementById('ca').innerHTML=`
+    <div class="exc-scan">
+      <div class="exc-scan-icon"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/><path d="M3 10a7 7 0 0 1 7-7"/></svg></div>
+      <div class="exc-scan-txt">
+        <div class="exc-scan-title">AI exception scan complete — ${EXCEPTIONS.length} issues found across Kinetic data</div>
+        <div class="exc-scan-sub">Live analysis of PO Suggestions, Approvals, and Receipts · May 1, 2026 · Sorted by severity</div>
+      </div>
+    </div>
+    <div class="mrow">
+      <div class="mc dn"><div class="ml">Critical</div><div class="mv">${critN}</div><div class="ms">Immediate action required</div></div>
+      <div class="mc wn"><div class="ml">High priority</div><div class="mv">${highN}</div><div class="ms">Action this week</div></div>
+      <div class="mc ac"><div class="ml">Medium</div><div class="mv">${medN}</div><div class="ms">Monitor closely</div></div>
+      <div class="mc"><div class="ml">Total value at risk</div><div class="mv">$826K+</div><div class="ms">Across critical exceptions</div></div>
+    </div>
+    <div id="exc-list">
+      ${EXCEPTIONS.map(e=>excCard(e)).join('')}
+    </div>`;
+}
+
+function excCard(e){
+  const cls=e.severity==='crit'?'exc-crit':e.severity==='high'?'exc-high':'exc-med';
+  const icls=e.severity==='crit'?'exc-icon-crit':e.severity==='high'?'exc-icon-high':'exc-icon-med';
+  const sevBadge=e.severity==='crit'?'<span class="badge br">Critical</span>':e.severity==='high'?'<span class="badge ba">High</span>':'<span class="badge bg">Medium</span>';
+  return`<div class="exc-card ${cls}" id="card-${e.id}">
+    <div class="exc-head" onclick="togExc('${e.id}')">
+      <div class="exc-icon ${icls}">${e.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div class="exc-title">${e.title}</div>
+        <div class="exc-sub">${e.subtitle}</div>
+        <div class="exc-meta">
+          ${sevBadge}
+          ${e.badges.map(b=>`<span class="badge ${b.cls}">${b.txt}</span>`).join('')}
+        </div>
+      </div>
+      <button class="exc-toggle" id="tog-${e.id}">
+        <svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+    </div>
+    <div class="exc-body" id="body-${e.id}">
+      <div class="exc-analysis"><strong style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3);display:block;margin-bottom:5px">AI Analysis</strong>${e.analysis}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Choose a resolution path</div>
+      <div class="exc-paths">
+        ${e.paths.map((p,i)=>`<div class="exc-path" id="path-${e.id}-${i}" onclick="selPath('${e.id}',${i})">
+          <span class="path-tag ${p.tag}">${p.tagTxt}</span>
+          <div class="path-title">${p.title}</div>
+          <div class="path-desc">${p.desc}</div>
+          <div class="path-impact">⚡ ${p.impact}</div>
+          <button class="path-act" onclick="event.stopPropagation();excAct('${p.fn}')">${p.action} ↗</button>
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+function togExc(id){
+  const body=document.getElementById('body-'+id);const tog=document.getElementById('tog-'+id);
+  const open=body.classList.contains('open');
+  body.classList.toggle('open',!open);tog.classList.toggle('open',!open);
+}
+
+function selPath(eid,idx){
+  document.querySelectorAll(`[id^="path-${eid}-"]`).forEach(el=>el.classList.remove('selected'));
+  document.getElementById(`path-${eid}-${idx}`).classList.add('selected');
+}
+
+function excAct(fnStr){
+  const match=fnStr.match(/qa\('(.+)'\)/s);
+  if(match)qa(match[1]);
+}
+
+/* ── CHAT ── */
+function rChat(){
+  setTop('Agent chat','Intelligence');
+  document.getElementById('ca').innerHTML=`<div style="display:flex;flex-direction:column;height:100%">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;padding-bottom:10px">
+      <button class="qc" onclick="qa('What is the most urgent thing I need to do today?')">Today's #1 priority</button>
+      <button class="qc" onclick="qa('Walk me through each critical exception and what I should do first')">Exception walkthrough</button>
+      <button class="qc" onclick="qa('How much total value is at risk across all open exceptions?')">Total value at risk</button>
+      <button class="qc" onclick="qa('Which vendors should I call today and in what order?')">Vendor call order</button>
+    </div>
+    <div class="msgs" id="msgs">
+      <div class="cm"><div class="cav ag">PI</div><div class="bub ag">Good morning, Howard. I've scanned your Kinetic data and surfaced <strong>6 exceptions</strong> — 3 critical, 2 high, 1 medium. The most urgent: a <strong>$812,736 ABC Metals PO waiting 67 days for approval</strong>. Head to the Exceptions tab to see all issues with recommended resolution paths, or ask me anything here.</div></div>
+    </div>
+    <div class="inrow">
+      <div class="inwrap"><input class="inp" id="ci" placeholder="Ask about any exception, vendor, or procurement issue…" onkeydown="if(event.key==='Enter')send()"/></div>
+      <button class="sendbtn" id="sb2" onclick="send()"><svg viewBox="0 0 14 14"><path d="M13 1L6 8M13 1L9 13l-3-5-5-3 12-4z"/></svg></button>
+    </div>
+  </div>`;}
+
+function addM(role,html){const m=document.getElementById('msgs');if(!m)return;const d=document.createElement('div');d.className='cm'+(role==='user'?' u':'');d.innerHTML=`<div class="cav ${role==='user'?'us':'ag'}">${role==='user'?'HL':'PI'}</div><div class="bub ${role==='user'?'us':'ag'}">${html}</div>`;m.appendChild(d);d.scrollIntoView({behavior:'smooth'});}
+function showTy(){const m=document.getElementById('msgs');if(!m)return;const d=document.createElement('div');d.className='cm';d.id='tid';d.innerHTML=`<div class="cav ag">PI</div><div class="bub ag"><div class="tdots"><span></span><span></span><span></span></div></div>`;m.appendChild(d);d.scrollIntoView({behavior:'smooth'});}
+function rmTy(){const t=document.getElementById('tid');if(t)t.remove();}
+async function send(){const ci=document.getElementById('ci');if(!ci)return;const q=ci.value.trim();if(!q)return;ci.value='';document.getElementById('sb2').disabled=true;addM('user',q);showTy();const r=await ask(q);rmTy();addM('agent',r);document.getElementById('sb2').disabled=false;}
+function qa(q){if(document.getElementById('msgs')){const ci=document.getElementById('ci');if(ci){ci.value=q;send();}}else{go('chat',document.querySelectorAll('.sb-row')[0]);setTimeout(()=>{const ci=document.getElementById('ci');if(ci){ci.value=q;send();}},60);}}
+
+/* ── OTHER VIEWS ── */
+function rSuggs(){
+  setTop('PO suggestions','Procurement',[{lbl:'Export',fn:''},{lbl:'Create PO from selected',pr:true,fn:''}]);
+  const c=document.getElementById('ca');
+  c.innerHTML=`<div class="mrow"><div class="mc ac"><div class="ml">Open</div><div class="mv">${SUGG.length}</div><div class="ms">Across ${Object.keys(vmap).length} vendors</div></div><div class="mc dn"><div class="ml">Overdue</div><div class="mv">${odList.length}</div><div class="ms">Order-by passed</div></div><div class="mc wn"><div class="ml">No vendor</div><div class="mv">${noV.length}</div><div class="ms">Blocking</div></div><div class="mc"><div class="ml">Est. value</div><div class="mv">$${fmt(totV)}</div><div class="ms">Priced only</div></div></div>
+  <div class="panel"><div class="ph"><div><div class="pt">All open PO suggestions</div><div class="ps">Live · ERP.BO.POSuggSvc · Click row for details</div></div><button class="cb" onclick="qa('Which PO suggestions should I prioritize today?')">Ask agent ↗</button></div>
+  <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Sug #</th><th>Part</th><th>Description</th><th>Vendor</th><th style="text-align:right">Qty</th><th style="text-align:right">Est. value</th><th>Order by</th><th>Status</th></tr></thead>
+  <tbody>${SUGG.map(r=>{const od=dA(r.OrderByDate);const st=od>0?`<span class="badge br">${od}d late</span>`:`<span class="badge bg">On track</span>`;const vn=r.Name||`<span style="color:#B07000;font-style:italic;font-size:10.5px">Unassigned</span>`;return`<tr><td class="mono">${r.SugNum}</td><td class="mono">${r.PartNum}</td><td>${r.LineDesc}</td><td>${vn}</td><td style="text-align:right">${fmt(r.XRelQty)}</td><td style="text-align:right">${usd(r.XRelQty,r.UnitPrice)}</td><td>${fD(r.OrderByDate)}</td><td>${st}</td></tr>`;}).join('')}</tbody></table></div></div>`;}
+
+function rApvs(){
+  setTop('Approval queue','Procurement');
+  const pv=pendA.reduce((s,a)=>s+a.POAmt,0);
+  document.getElementById('ca').innerHTML=`<div class="mrow"><div class="mc dn"><div class="ml">Pending</div><div class="mv">${pendA.length}</div><div class="ms">HCrabtre sign-off</div></div><div class="mc wn"><div class="ml">Value pending</div><div class="mv">$${fmt(pv)}</div><div class="ms">Blocked</div></div><div class="mc ac"><div class="ml">Approved (all time)</div><div class="mv">${APVS.filter(a=>a.ApproverResponse==='APPROVED').length}</div><div class="ms">Historical</div></div><div class="mc"><div class="ml">Buyer limit</div><div class="mv">$10K</div><div class="ms">Howard Low</div></div></div>
+  <div class="panel" style="margin-bottom:12px"><div class="ph"><div><div class="pt">Pending approvals</div><div class="ps">Click a card to view details</div></div></div><div class="pb" style="padding-top:6px">
+  ${pendA.map(a=>{const age=dA(a.MsgDate);const ug=age>30;return`<div class="ac2 ${ug?'ug':'md2'}"><div class="acr"><div><div class="acn">PO ${a.PONum} — ${a.VendorName}</div><div class="acm">Submitted ${fD(a.MsgDate)} · To: H. Crabtree · Exceeds limit by $${fmt(a.POAmt-a.BuyerLimit)}</div></div><div style="text-align:right;flex-shrink:0"><div class="aca">$${fmt(a.POAmt)}</div><span class="badge ${ug?'br':'ba'}" style="margin-top:6px;display:inline-flex">${age}d waiting</span></div></div>
+  <div class="aacts"><button class="cb" onclick="qa('Draft escalation for PO ${a.PONum} (${a.VendorName}, $${fmt(a.POAmt)}) pending ${age} days')">Draft escalation ↗</button><button class="cb wn" onclick="qa('What is the risk of further delay on PO ${a.PONum}?')">Assess risk ↗</button><button class="cb dn" onclick="go('exceptions',document.querySelectorAll(\'.sb-row\')[1])">View exception ↗</button></div></div>`;}).join('')}
+  </div></div>
+  <div class="panel"><div class="ph"><div class="pt">Full approval history</div></div><table class="tbl"><thead><tr><th>PO #</th><th>Vendor</th><th style="text-align:right">Amount</th><th>Status</th><th>Date</th></tr></thead><tbody>${APVS.map(a=>{const rc=a.ApproverResponse==='APPROVED'?'bg':a.ApproverResponse==='MANUALLY CLOSED'?'bgy':a.ApproverResponse?'br':'ba';return`<tr><td class="mono">${a.PONum}</td><td>${a.VendorName}</td><td style="text-align:right;font-weight:600">$${fmt(a.POAmt)}</td><td><span class="badge ${rc}">${a.ApproverResponse||'Pending'}</span></td><td>${fD(a.MsgDate)}</td></tr>`;}).join('')}</tbody></table></div>`;}
+
+function rOD(){
+  setTop('Overdue order-by dates','Procurement',[{lbl:'Contact all vendors ↗',pr:true,fn:"qa('Draft outreach emails for all vendors with overdue order-by dates')"}]);
+  document.getElementById('ca').innerHTML=`<div class="mrow"><div class="mc dn"><div class="ml">Overdue</div><div class="mv">${odList.length}</div><div class="ms">Order-by passed</div></div><div class="mc dn"><div class="ml">Critical (&gt;90d)</div><div class="mv">${odList.filter(r=>dA(r.OrderByDate)>90).length}</div><div class="ms">Escalation needed</div></div><div class="mc wn"><div class="ml">Vendors</div><div class="mv">${[...new Set(odList.map(r=>r.VendorID).filter(Boolean))].length}</div><div class="ms">Affected</div></div><div class="mc"><div class="ml">No vendor</div><div class="mv">${odList.filter(r=>!r.VendorID).length}</div><div class="ms">Unblocking needed</div></div></div>
+  <div class="panel"><div class="ph"><div><div class="pt">Overdue suggestions</div><div class="ps">Sorted by urgency · Click row for details</div></div></div>
+  <table class="tbl"><thead><tr><th>Sug #</th><th>Description</th><th>Vendor</th><th>Order by</th><th>Days late</th><th style="text-align:right">Est. value</th><th></th></tr></thead>
+  <tbody>${odList.map(r=>{const d=dA(r.OrderByDate);const vn=r.Name||`<em style="color:#D08B00">No vendor</em>`;return`<tr><td class="mono">${r.SugNum}</td><td>${r.LineDesc}</td><td>${vn}</td><td>${fD(r.OrderByDate)}</td><td><span class="badge ${d>90?'br':'ba'}">${d.toLocaleString()}d</span></td><td style="text-align:right">${usd(r.XRelQty,r.UnitPrice)}</td><td><button class="cb" onclick="event.stopPropagation();qa('Draft follow-up for ${r.LineDesc} (Sug ${r.SugNum}), ${d} days overdue${r.Name?' from '+r.Name:''}')">Draft msg ↗</button></td></tr>`;}).join('')}</tbody></table></div>`;}
+
+function rRcpts(){
+  setTop('Receipt history','Operations');
+  document.getElementById('ca').innerHTML=`<div class="mrow"><div class="mc ac"><div class="ml">Receipts</div><div class="mv">${RCPTS.length}</div><div class="ms">ERP.BO.ReceiptSvc</div></div><div class="mc"><div class="ml">Most recent</div><div class="mv">${dA(RCPTS[0].ReceiptDate)}d ago</div><div class="ms">Apr 28 · V-31</div></div><div class="mc"><div class="ml">Unique vendors</div><div class="mv">${[...new Set(RCPTS.map(r=>r.VendorNum))].length}</div><div class="ms">With receipts</div></div><div class="mc"><div class="ml">Plant</div><div class="mv">MfgSys</div><div class="ms">All receipts</div></div></div>
+  <div class="panel"><div class="ph"><div><div class="pt">Recent receipts</div><div class="ps">Live · ERP.BO.ReceiptSvc · Click row to view</div></div><button class="cb" onclick="qa('What do recent receipts tell us about vendor delivery performance?')">Analyze ↗</button></div>
+  <table class="tbl"><thead><tr><th>Pack slip</th><th>Vendor #</th><th>Receipt date</th><th>Days ago</th><th>Plant</th></tr></thead>
+  <tbody>${RCPTS.map(r=>{const d=dA(r.ReceiptDate);return`<tr><td class="mono" style="font-size:10px">${r.PackSlip}</td><td><span class="badge bt">V-${r.VendorNum}</span></td><td>${fD(r.ReceiptDate)}</td><td><span class="badge ${d<60?'bg':d<400?'ba':'bgy'}">${d}d</span></td><td>MfgSys</td></tr>`;}).join('')}</tbody></table></div>`;}
+
+function rVends(){
+  setTop('Vendor summary','Operations',[{lbl:'Contact all ↗',pr:true,fn:"qa('Prioritized outreach list for all vendors with open suggestions')"}]);
+  document.getElementById('ca').innerHTML=`
+  ${noV.length?`<div class="alert"><span class="at">${noV.length} suggestions have no vendor — blocking open orders.</span><button class="cb" onclick="qa('Which suggestions have no vendor? Resolution steps?')" style="flex-shrink:0;margin-left:10px">Ask agent ↗</button></div>`:''}
+  <div class="panel"><div class="ph"><div class="pt">Vendors with open suggestions</div><div class="ps">Click row for vendor details</div></div>
+  <table class="tbl"><thead><tr><th>Vendor ID</th><th>Name</th><th>Open</th><th style="text-align:right">Est. value</th><th></th></tr></thead>
+  <tbody>${vends.map(v=>`<tr><td class="mono">${v.id}</td><td>${v.name}</td><td><span class="badge bt">${v.n}</span></td><td style="text-align:right">${v.v>0?'$'+fmt(v.v):'—'}</td><td><button class="cb" onclick="event.stopPropagation();qa('Review open suggestions for ${v.name} and recommend next steps')">Review ↗</button></td></tr>`).join('')}</tbody></table></div>`;}
+
+function rComms(){
+  setTop('Vendor communications','Operations',[{lbl:'Save draft',fn:''},{lbl:'Send & log to Kinetic',pr:true,fn:''}]);
+  document.getElementById('ca').innerHTML=`<div class="panel"><div class="vtrow" id="vtabs">${vends.slice(0,5).map((v,i)=>`<button class="vt${i===0?' on':''}" onclick="selV('${v.id}',this)">${v.name}</button>`).join('')}</div><div class="pb" id="ea"></div></div>`;
+  drawE(vends[0]);}
+
+function selV(id,el){document.querySelectorAll('.vt').forEach(t=>t.classList.remove('on'));el.classList.add('on');drawE(vends.find(v=>v.id===id)||vends[0]);}
+function drawE(v){
+  const sg=SUGG.filter(r=>r.VendorID===v.id);const od=sg.filter(r=>dA(r.OrderByDate)>0);
+  document.getElementById('ea').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><div><div style="font-size:13px;font-weight:700;color:var(--tx)">${v.name} <span class="mono" style="font-size:11px;color:var(--tx3)">(${v.id})</span></div><div style="font-size:11px;color:var(--tx3);margin-top:2px">${sg.length} open · ${od.length} overdue · Est: ${v.v>0?'$'+fmt(v.v):'—'}</div></div><span class="badge ${od.length?'br':'bg'}">${od.length?od.length+' overdue':'On track'}</span></div>
+  <div class="ep"><div class="efl"><span class="elbl">To</span><span class="eval">procurement@${v.id.toLowerCase()}.com</span></div><div class="efl"><span class="elbl">CC</span><span class="eval">howard.low@company.com</span></div><div class="efl"><span class="elbl">Subject</span><span class="eval" style="font-weight:600;color:var(--tx)">${od.length?`Urgent: Open PO follow-up — ${od.length} overdue item(s)`:`Purchase order status update`}</span></div><hr class="ediv"/><div class="ebody">Dear ${v.name} team,<br><br>${od.length?`We are following up on <strong>${od.length} open suggestion(s)</strong> where the order-by date has passed:<br><br>${od.map(r=>`&bull; <strong>${r.LineDesc}</strong> (${r.PartNum}) — Qty: ${fmt(r.XRelQty)} — Due: ${fD(r.OrderByDate)}`).join('<br>')}<br><br>Please confirm receipt and provide revised ETAs within 24 hours.`:`Confirming status on ${sg.length} active suggestion(s):<br><br>${sg.map(r=>`&bull; ${r.LineDesc} (${r.PartNum}) — Qty ${fmt(r.XRelQty)} — Due ${fD(r.DueDate)}`).join('<br>')}`}<br><br>Best regards,<br>Howard Low — Lead Buyer</div></div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px"><button class="cb" onclick="qa('Rewrite the ${v.name} email more assertively')">More assertive ↗</button><button class="cb wn" onclick="qa('Add $ amounts and dates to the ${v.name} email')">Add $ + dates ↗</button><button class="cb dn" onclick="qa('Production risk if ${v.name} cannot deliver?')">Assess risk ↗</button></div>`;}
+
+// Start on exceptions
+rExc();
+// Auto-open the first exception
+setTimeout(()=>togExc('EX001'),400);
+</script>
